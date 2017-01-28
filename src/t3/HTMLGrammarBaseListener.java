@@ -16,18 +16,6 @@ public class HTMLGrammarBaseListener implements HTMLGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInicio(HTMLGrammarParser.InicioContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInicio(HTMLGrammarParser.InicioContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterPrograma(HTMLGrammarParser.ProgramaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -71,6 +59,42 @@ public class HTMLGrammarBaseListener implements HTMLGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitColuna(HTMLGrammarParser.ColunaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterData(HTMLGrammarParser.DataContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitData(HTMLGrammarParser.DataContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBorder(HTMLGrammarParser.BorderContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBorder(HTMLGrammarParser.BorderContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

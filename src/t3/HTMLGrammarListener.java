@@ -8,16 +8,6 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface HTMLGrammarListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#inicio}.
-	 * @param ctx the parse tree
-	 */
-	void enterInicio(HTMLGrammarParser.InicioContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#inicio}.
-	 * @param ctx the parse tree
-	 */
-	void exitInicio(HTMLGrammarParser.InicioContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#programa}.
 	 * @param ctx the parse tree
 	 */
@@ -57,4 +47,34 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterData(HTMLGrammarParser.DataContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitData(HTMLGrammarParser.DataContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#border}.
+	 * @param ctx the parse tree
+	 */
+	void enterBorder(HTMLGrammarParser.BorderContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#border}.
+	 * @param ctx the parse tree
+	 */
+	void exitBorder(HTMLGrammarParser.BorderContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#identificador_tabela}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#identificador_tabela}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx);
 }

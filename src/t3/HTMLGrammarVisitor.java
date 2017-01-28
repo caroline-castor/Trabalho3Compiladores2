@@ -11,12 +11,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#inicio}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInicio(HTMLGrammarParser.InicioContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#programa}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -40,4 +34,22 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#data}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitData(HTMLGrammarParser.DataContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#border}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBorder(HTMLGrammarParser.BorderContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#identificador_tabela}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx);
 }
