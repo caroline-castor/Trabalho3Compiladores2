@@ -23,17 +23,23 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTabela(HTMLGrammarParser.TabelaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#linha}.
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#formacao_tabela}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLinha(HTMLGrammarParser.LinhaContext ctx);
+	T visitFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#coluna}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#linha}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLinha(HTMLGrammarParser.LinhaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#data}.
 	 * @param ctx the parse tree

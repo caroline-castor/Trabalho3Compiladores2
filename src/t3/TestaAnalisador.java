@@ -21,6 +21,7 @@ public class TestaAnalisador {
         try {
             //inicialização do Gerador de Código
             T1ErrorListener error = new T1ErrorListener(out);
+            GeradorDeCodigo ger = new GeradorDeCodigo(out);
             // Adição dos listeners no LEXER e no PARSER
             lexer.addErrorListener(new T1ErrorListenerLexer(out));
             parser.addErrorListener(new T1ErrorListener(out));
@@ -28,7 +29,7 @@ public class TestaAnalisador {
             // Inicio 
             HTMLGrammarParser.ProgramaContext raiz = parser.programa();
             ParseTreeWalker ptw = new ParseTreeWalker();
-            ptw.walk((ParseTreeListener) error,raiz);
+            ptw.walk(ger,raiz);
         } catch (RuntimeException e) {
             // Pega as mensagens de erro semanticas
             if (e.getMessage() != null) {
@@ -36,7 +37,7 @@ public class TestaAnalisador {
             }
         }
 
-        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Carol\\Desktop\\T3\\Saida.txt"));
+        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Carol\\Desktop\\T3\\Saida.html"));
         pw.print(out.toString());
         pw.flush();
         pw.close();

@@ -28,15 +28,15 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 */
 	void exitTabela(HTMLGrammarParser.TabelaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#linha}.
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#formacao_tabela}.
 	 * @param ctx the parse tree
 	 */
-	void enterLinha(HTMLGrammarParser.LinhaContext ctx);
+	void enterFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#linha}.
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#formacao_tabela}.
 	 * @param ctx the parse tree
 	 */
-	void exitLinha(HTMLGrammarParser.LinhaContext ctx);
+	void exitFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#coluna}.
 	 * @param ctx the parse tree
@@ -47,6 +47,16 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#linha}.
+	 * @param ctx the parse tree
+	 */
+	void enterLinha(HTMLGrammarParser.LinhaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#linha}.
+	 * @param ctx the parse tree
+	 */
+	void exitLinha(HTMLGrammarParser.LinhaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#data}.
 	 * @param ctx the parse tree

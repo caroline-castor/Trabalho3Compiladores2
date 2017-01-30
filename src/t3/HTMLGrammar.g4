@@ -33,17 +33,23 @@ NUMERO : ('0'..'9')+;
 
 programa:INICIO{
           pilhaDeTabelas.empilhar(new TabelaDeSimbolos("global")); 
-        } ABRE_CHAVES (TABELA identificador_tabela ABRE_CHAVES (tabela)* FECHA_CHAVES)*  FECHA_CHAVES{
+        } ABRE_CHAVES tabela* FECHA_CHAVES{
           pilhaDeTabelas.desempilhar();
           if(msg_error!=""){
                   throw new RuntimeException(msg_error);
           } 
         };
-tabela:  (border LINHA ABRE_CHAVES linha FECHA_CHAVES)| 
-         (border COLUNA ABRE_CHAVES coluna FECHA_CHAVES) 
-         ;
-linha: (data (tabela)) |;  
-coluna: (data (tabela)) | ; 
+
+tabela: (TABELA identificador_tabela ABRE_CHAVES (formacao_tabela) FECHA_CHAVES);
+formacao_tabela:  (border linha)| 
+                  (border coluna) |;
+
+coluna: COLUNA ABRE_CHAVES data coluna FECHA_CHAVES|
+        COLUNA ABRE_CHAVES data linha FECHA_CHAVES|; 
+
+linha: LINHA ABRE_CHAVES data coluna FECHA_CHAVES|
+       LINHA ABRE_CHAVES data linha FECHA_CHAVES|;
+
 data: DATA DOIS_PONTOS CADEIA PONTO_VIRGULA |;
 border: (BORDER DOIS_PONTOS ASPAS_DUPLAS NUMERO ASPAS_DUPLAS PONTO_VIRGULA) |;
 identificador_tabela: id= IDENT{

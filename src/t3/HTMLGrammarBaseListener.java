@@ -40,13 +40,13 @@ public class HTMLGrammarBaseListener implements HTMLGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLinha(HTMLGrammarParser.LinhaContext ctx) { }
+	@Override public void enterFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLinha(HTMLGrammarParser.LinhaContext ctx) { }
+	@Override public void exitFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -59,6 +59,18 @@ public class HTMLGrammarBaseListener implements HTMLGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitColuna(HTMLGrammarParser.ColunaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLinha(HTMLGrammarParser.LinhaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLinha(HTMLGrammarParser.LinhaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

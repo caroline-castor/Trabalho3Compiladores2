@@ -1,18 +1,6 @@
 inicio{
 tabela table1 {
-	coluna{
 	
-	data:"123";
-	linha{
-		data:"123";
-	 }
-	linha{
-	}
-	}
-}
-
-tabela table2{
-
 }
 
 }
