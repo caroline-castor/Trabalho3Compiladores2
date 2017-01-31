@@ -1,6 +1,61 @@
 inicio{
-tabela table1 {
+
+listaOrdenada {
+	tipo:"1";
+	*"cadeia";
+	*"cadeia2"
+	listaOrdenada{
+		tipo:"a";
+		*"subitemCadeia2"
+		listaNaoOrdenada{
+			tipo:"disc";
+			*"subsubitemCadeia2";
+		}
+		;
+	};
+ }
+ 
+
+
+tabela  {
+	
+	linha{
+		coluna{
+		   data:"CADEIA";
+		   }
+		
+		coluna{
+			data:"texto2";
+		}
+		
+		coluna-titulo{
+			data:"texto3";
+		}
+	}
 	
 }
+
+
+tabela  {
+	
+	linha{
+		coluna{
+		   data:"texto1";
+		}
+		
+		coluna{
+			data:"texto2";
+		}
+		
+		coluna-titulo{
+			data:"texto3";
+		}
+	}
+	
+}
+
+
+
+
 
 }

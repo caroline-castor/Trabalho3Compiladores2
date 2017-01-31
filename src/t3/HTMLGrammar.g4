@@ -10,12 +10,15 @@ grammar HTMLGrammar;
 {
    public static String grupo="551503, 586773";
    String msg_error="";
-   PilhaDeTabelas pilhaDeTabelas = new PilhaDeTabelas();  
+   
 }
 
 INICIO: 'inicio';
 LINHA: 'linha';
 COLUNA: 'coluna';
+COLUNA_TITULO: 'coluna-titulo';
+LISTA:'listaOrdenada';
+LISTA2:'listaNaoOrdenada';
 DATA: 'data';
 DOIS_PONTOS:':';
 PONTO_VIRGULA: ';';
@@ -23,45 +26,31 @@ ASPAS_DUPLAS: '"';
 ABRE_CHAVES: '{';
 FECHA_CHAVES: '}';
 TABELA: 'tabela';
+TIPO:'tipo';
+LINK:'link';
+URL:'url';
+IDENT : ('a'..'z'|'A'..'Z'|'0'..'9');
 WS : ( ' ' |'\t' | '\r' | '\n') {skip();}; 
 COMENTARIO : '{' ~('\n'|'\r'|'\t')* '\r'? '\n'? '}'('\n'('\n'|'\t'))* {skip();};
 CADEIA : '\'' ~('\n' | '\r' | '\'')* '\'' | '"' ~('\n' | '\r' | '"')* '"';
-IDENT : ('_'|'a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-BORDER: 'border';
 NUMERO : ('0'..'9')+;
+ASTERISCO:'*';
 
 
-programa:INICIO{
-          pilhaDeTabelas.empilhar(new TabelaDeSimbolos("global")); 
-        } ABRE_CHAVES tabela* FECHA_CHAVES{
-          pilhaDeTabelas.desempilhar();
-          if(msg_error!=""){
-                  throw new RuntimeException(msg_error);
-          } 
-        };
+programa:INICIO ABRE_CHAVES (tabela|listaOrdenada|listaNOrdenada)*  FECHA_CHAVES;
+listaOrdenada: LISTA ABRE_CHAVES tipoMarcador  (item)* FECHA_CHAVES;
+listaNOrdenada:LISTA2 ABRE_CHAVES tipoMarcador (item)* FECHA_CHAVES;
+tipoMarcador:TIPO DOIS_PONTOS CADEIA PONTO_VIRGULA;
+tabela: TABELA ABRE_CHAVES (linha)* FECHA_CHAVES;
+linha: LINHA ABRE_CHAVES (coluna | coluna_cabecalho)* FECHA_CHAVES;
+coluna: COLUNA ABRE_CHAVES data FECHA_CHAVES;
+coluna_cabecalho: COLUNA_TITULO ABRE_CHAVES data FECHA_CHAVES;
+link: LINK ABRE_CHAVES url FECHA_CHAVES;
+url:URL DOIS_PONTOS CADEIA DOIS_PONTOS;
+data: DATA DOIS_PONTOS (CADEIA|listaOrdenada|listaNOrdenada) PONTO_VIRGULA;
+item: ASTERISCO CADEIA(listaOrdenada|listaNOrdenada)* PONTO_VIRGULA;
 
-tabela: (TABELA identificador_tabela ABRE_CHAVES (formacao_tabela) FECHA_CHAVES);
-formacao_tabela:  (border linha)| 
-                  (border coluna) |;
 
-coluna: COLUNA ABRE_CHAVES data coluna FECHA_CHAVES|
-        COLUNA ABRE_CHAVES data linha FECHA_CHAVES|; 
-
-linha: LINHA ABRE_CHAVES data coluna FECHA_CHAVES|
-       LINHA ABRE_CHAVES data linha FECHA_CHAVES|;
-
-data: DATA DOIS_PONTOS CADEIA PONTO_VIRGULA |;
-border: (BORDER DOIS_PONTOS ASPAS_DUPLAS NUMERO ASPAS_DUPLAS PONTO_VIRGULA) |;
-identificador_tabela: id= IDENT{
-       //verificação se já existe uma tabela com o mesmo nome
-       if(pilhaDeTabelas.topo().existeSimbolo($id.getText())){
-            msg_error += "Linha " + $id.getLine() + ": identificador "+$id.getText()+" ja declarado anteriormente\n" ;
-       }else{
-             // se não existir então adiciona-se o identificador escopo atual
-            pilhaDeTabelas.topo().adicionarSimbolo($id.getText());
-            
-        }
-       };
 
 /*
 

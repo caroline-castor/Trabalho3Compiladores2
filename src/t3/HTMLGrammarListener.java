@@ -18,6 +18,36 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 */
 	void exitPrograma(HTMLGrammarParser.ProgramaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#listaOrdenada}.
+	 * @param ctx the parse tree
+	 */
+	void enterListaOrdenada(HTMLGrammarParser.ListaOrdenadaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#listaOrdenada}.
+	 * @param ctx the parse tree
+	 */
+	void exitListaOrdenada(HTMLGrammarParser.ListaOrdenadaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#listaNOrdenada}.
+	 * @param ctx the parse tree
+	 */
+	void enterListaNOrdenada(HTMLGrammarParser.ListaNOrdenadaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#listaNOrdenada}.
+	 * @param ctx the parse tree
+	 */
+	void exitListaNOrdenada(HTMLGrammarParser.ListaNOrdenadaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#tipoMarcador}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipoMarcador(HTMLGrammarParser.TipoMarcadorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#tipoMarcador}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipoMarcador(HTMLGrammarParser.TipoMarcadorContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#tabela}.
 	 * @param ctx the parse tree
 	 */
@@ -27,26 +57,6 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTabela(HTMLGrammarParser.TabelaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#formacao_tabela}.
-	 * @param ctx the parse tree
-	 */
-	void enterFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#formacao_tabela}.
-	 * @param ctx the parse tree
-	 */
-	void exitFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#coluna}.
-	 * @param ctx the parse tree
-	 */
-	void enterColuna(HTMLGrammarParser.ColunaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#coluna}.
-	 * @param ctx the parse tree
-	 */
-	void exitColuna(HTMLGrammarParser.ColunaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#linha}.
 	 * @param ctx the parse tree
@@ -58,6 +68,46 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 */
 	void exitLinha(HTMLGrammarParser.LinhaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#coluna}.
+	 * @param ctx the parse tree
+	 */
+	void enterColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#coluna}.
+	 * @param ctx the parse tree
+	 */
+	void exitColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#coluna_cabecalho}.
+	 * @param ctx the parse tree
+	 */
+	void enterColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#coluna_cabecalho}.
+	 * @param ctx the parse tree
+	 */
+	void exitColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#link}.
+	 * @param ctx the parse tree
+	 */
+	void enterLink(HTMLGrammarParser.LinkContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#link}.
+	 * @param ctx the parse tree
+	 */
+	void exitLink(HTMLGrammarParser.LinkContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#url}.
+	 * @param ctx the parse tree
+	 */
+	void enterUrl(HTMLGrammarParser.UrlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#url}.
+	 * @param ctx the parse tree
+	 */
+	void exitUrl(HTMLGrammarParser.UrlContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#data}.
 	 * @param ctx the parse tree
 	 */
@@ -68,23 +118,13 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 */
 	void exitData(HTMLGrammarParser.DataContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#border}.
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#item}.
 	 * @param ctx the parse tree
 	 */
-	void enterBorder(HTMLGrammarParser.BorderContext ctx);
+	void enterItem(HTMLGrammarParser.ItemContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#border}.
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#item}.
 	 * @param ctx the parse tree
 	 */
-	void exitBorder(HTMLGrammarParser.BorderContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#identificador_tabela}.
-	 * @param ctx the parse tree
-	 */
-	void enterIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#identificador_tabela}.
-	 * @param ctx the parse tree
-	 */
-	void exitIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx);
+	void exitItem(HTMLGrammarParser.ItemContext ctx);
 }

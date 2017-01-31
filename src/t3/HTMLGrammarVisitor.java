@@ -17,23 +17,29 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrograma(HTMLGrammarParser.ProgramaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#listaOrdenada}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitListaOrdenada(HTMLGrammarParser.ListaOrdenadaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#listaNOrdenada}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitListaNOrdenada(HTMLGrammarParser.ListaNOrdenadaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#tipoMarcador}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipoMarcador(HTMLGrammarParser.TipoMarcadorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#tabela}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTabela(HTMLGrammarParser.TabelaContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#formacao_tabela}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFormacao_tabela(HTMLGrammarParser.Formacao_tabelaContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#coluna}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitColuna(HTMLGrammarParser.ColunaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#linha}.
 	 * @param ctx the parse tree
@@ -41,21 +47,39 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLinha(HTMLGrammarParser.LinhaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#coluna}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColuna(HTMLGrammarParser.ColunaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#coluna_cabecalho}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#link}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLink(HTMLGrammarParser.LinkContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#url}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUrl(HTMLGrammarParser.UrlContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitData(HTMLGrammarParser.DataContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#border}.
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#item}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBorder(HTMLGrammarParser.BorderContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#identificador_tabela}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIdentificador_tabela(HTMLGrammarParser.Identificador_tabelaContext ctx);
+	T visitItem(HTMLGrammarParser.ItemContext ctx);
 }
