@@ -52,6 +52,30 @@ public class HTMLGrammarBaseListener implements HTMLGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLink(HTMLGrammarParser.LinkContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLink(HTMLGrammarParser.LinkContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUrl(HTMLGrammarParser.UrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUrl(HTMLGrammarParser.UrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTipoMarcador(HTMLGrammarParser.TipoMarcadorContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -107,30 +131,6 @@ public class HTMLGrammarBaseListener implements HTMLGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLink(HTMLGrammarParser.LinkContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLink(HTMLGrammarParser.LinkContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterUrl(HTMLGrammarParser.UrlContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitUrl(HTMLGrammarParser.UrlContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

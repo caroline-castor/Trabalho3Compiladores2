@@ -15,13 +15,36 @@ listaOrdenada {
 	};
  }
  
-
+link{
+				data:"link face";
+				url:"www.facebook.com";
+			}
 
 tabela  {
 	
 	linha{
 		coluna{
-		   data:"CADEIA";
+		   data:listaOrdenada {
+	tipo:"1";
+	*"cadeia";
+	*"cadeia2"
+	listaOrdenada{
+		tipo:"a";
+		*"subitemCadeia2"
+		listaNaoOrdenada{
+			tipo:"disc";
+			*"subsubitemCadeia2";
+			*link{
+				data:"link face";
+				url:"www.facebook.com";
+			};
+		}
+		;
+	};
+ }
+		;
+		
+		 
 		   }
 		
 		coluna{

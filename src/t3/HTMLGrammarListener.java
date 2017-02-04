@@ -38,6 +38,26 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 */
 	void exitListaNOrdenada(HTMLGrammarParser.ListaNOrdenadaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#link}.
+	 * @param ctx the parse tree
+	 */
+	void enterLink(HTMLGrammarParser.LinkContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#link}.
+	 * @param ctx the parse tree
+	 */
+	void exitLink(HTMLGrammarParser.LinkContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#url}.
+	 * @param ctx the parse tree
+	 */
+	void enterUrl(HTMLGrammarParser.UrlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#url}.
+	 * @param ctx the parse tree
+	 */
+	void exitUrl(HTMLGrammarParser.UrlContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#tipoMarcador}.
 	 * @param ctx the parse tree
 	 */
@@ -87,26 +107,6 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#link}.
-	 * @param ctx the parse tree
-	 */
-	void enterLink(HTMLGrammarParser.LinkContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#link}.
-	 * @param ctx the parse tree
-	 */
-	void exitLink(HTMLGrammarParser.LinkContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HTMLGrammarParser#url}.
-	 * @param ctx the parse tree
-	 */
-	void enterUrl(HTMLGrammarParser.UrlContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HTMLGrammarParser#url}.
-	 * @param ctx the parse tree
-	 */
-	void exitUrl(HTMLGrammarParser.UrlContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#data}.
 	 * @param ctx the parse tree

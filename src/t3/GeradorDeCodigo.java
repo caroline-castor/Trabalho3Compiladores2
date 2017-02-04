@@ -19,8 +19,11 @@ public class GeradorDeCodigo extends HTMLGrammarBaseListener {
 
     @Override
     public void enterColuna(HTMLGrammarParser.ColunaContext ctx) {
-        
+        if(ctx.data().expr==1){
         saida.println("<TD>"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
+        }else{
+            saida.println("<TD>");
+        }
            
     }
 
@@ -101,7 +104,23 @@ public class GeradorDeCodigo extends HTMLGrammarBaseListener {
 
     @Override
     public void enterItem(HTMLGrammarParser.ItemContext ctx) {
-        saida.println("<li>"+ctx.CADEIA().getText().replaceAll("\"", ""));
+        if(ctx.expr==1){
+        for(int i =0; i<ctx.CADEIA().size();i++){
+        saida.println("<li>"+ctx.CADEIA(i).getText());
+        }
+        }else{
+            saida.println("<li>");
+        }
+    }
+
+    @Override
+    public void exitLink(HTMLGrammarParser.LinkContext ctx) {
+        saida.println("</a>");
+    }
+
+    @Override
+    public void enterLink(HTMLGrammarParser.LinkContext ctx) {
+        saida.println("<a href=http://"+ctx.url().CADEIA().getText().replaceAll("\"", "")+">"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
     }
    
     

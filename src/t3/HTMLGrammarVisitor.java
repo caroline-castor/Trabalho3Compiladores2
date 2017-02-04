@@ -29,6 +29,18 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitListaNOrdenada(HTMLGrammarParser.ListaNOrdenadaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#link}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLink(HTMLGrammarParser.LinkContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#url}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUrl(HTMLGrammarParser.UrlContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#tipoMarcador}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -58,18 +70,6 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#link}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLink(HTMLGrammarParser.LinkContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HTMLGrammarParser#url}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUrl(HTMLGrammarParser.UrlContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#data}.
 	 * @param ctx the parse tree
