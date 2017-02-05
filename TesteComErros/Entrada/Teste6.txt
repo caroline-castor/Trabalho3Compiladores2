@@ -1,0 +1,8 @@
+inicio{
+	head{
+	   h1{
+		data:"erro faltando }";
+	   
+	}
+
+}

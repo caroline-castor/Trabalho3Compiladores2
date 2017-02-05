@@ -1,0 +1,7 @@
+inicio{
+	tabela{
+		linha{
+			data:"definindo texto para uma linha sem uma coluna";
+		}
+	}
+}

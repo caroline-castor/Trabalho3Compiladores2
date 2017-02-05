@@ -1,0 +1,8 @@
+inicio{
+	listaOrdenada{
+		tipo:"disc";
+		*"item1";
+		"item2";
+	}
+
+}

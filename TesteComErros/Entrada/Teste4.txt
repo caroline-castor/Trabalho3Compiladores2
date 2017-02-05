@@ -1,0 +1,6 @@
+inicio{
+	img{
+		src:"imagemTeste1";
+	}
+
+}

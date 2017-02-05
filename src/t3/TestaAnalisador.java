@@ -2,6 +2,7 @@ package t3;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -11,11 +12,11 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class TestaAnalisador {
-
-    public static void main(String args[]) throws IOException, RecognitionException {
+    
+    public static void testaErros(String caminho) throws FileNotFoundException, IOException{
         for(int i=1; i<=6; i++){
         SaidaParser out = new SaidaParser();
-        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("TesteSemErros\\Entrada\\Teste"+i+".txt"));
+        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(caminho+"\\Entrada\\Teste"+i+".txt"));
         HTMLGrammarLexer lexer = new HTMLGrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         HTMLGrammarParser parser = new HTMLGrammarParser(tokens);
@@ -38,11 +39,20 @@ public class TestaAnalisador {
             }
         }
 
-        PrintWriter pw = new PrintWriter(new File("TesteSemErros\\Saida\\Saida"+i+".html"));
+        PrintWriter pw = new PrintWriter(new File(caminho+"\\Saida\\Saida"+i+".html"));
         pw.print(out.toString());
         pw.flush();
         pw.close();
     }
         
+    }
+    
+
+    public static void main(String args[]) throws IOException, RecognitionException {
+        //Testando arquivos sem erros
+        String caminhoSemErros = "TesteSemErros";
+        String caminhoComErros= "TesteComErros";
+        testaErros(caminhoSemErros);
+        testaErros(caminhoComErros);
     }
 }

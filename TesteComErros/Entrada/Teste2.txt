@@ -1,0 +1,6 @@
+inicio{
+	coluna{
+	  data:"coluna sem tabela";
+	}
+
+}
