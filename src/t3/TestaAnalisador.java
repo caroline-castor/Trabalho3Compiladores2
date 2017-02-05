@@ -15,7 +15,7 @@ public class TestaAnalisador {
     public static void main(String args[]) throws IOException, RecognitionException {
         for(int i=1; i<=6; i++){
         SaidaParser out = new SaidaParser();
-        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("C:\\Users\\Carol\\Desktop\\T3\\Teste"+i+".txt"));
+        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("TesteSemErros\\Entrada\\Teste"+i+".txt"));
         HTMLGrammarLexer lexer = new HTMLGrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         HTMLGrammarParser parser = new HTMLGrammarParser(tokens);
@@ -38,7 +38,7 @@ public class TestaAnalisador {
             }
         }
 
-        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Carol\\Desktop\\T3\\Saida"+i+".html"));
+        PrintWriter pw = new PrintWriter(new File("TesteSemErros\\Saida\\Saida"+i+".html"));
         pw.print(out.toString());
         pw.flush();
         pw.close();

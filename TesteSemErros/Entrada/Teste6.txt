@@ -22,7 +22,7 @@ inicio{
 			}
 		}
 		
-		<!-- comentario -->
+
 		
 		linha{
 			coluna{
