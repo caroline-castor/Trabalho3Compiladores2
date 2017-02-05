@@ -15,8 +15,6 @@ grammar HTMLGrammar;
 
 INICIO: 'inicio';
 LINHA: 'linha';
-WIDTH: 'widht';
-HEIGHT: 'height';
 COLUNA: 'coluna';
 COLUNA_TITULO: 'coluna-titulo';
 LISTA:'listaOrdenada';
