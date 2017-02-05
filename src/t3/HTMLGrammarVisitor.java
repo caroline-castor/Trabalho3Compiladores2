@@ -17,6 +17,66 @@ public interface HTMLGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrograma(HTMLGrammarParser.ProgramaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#head}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHead(HTMLGrammarParser.HeadContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#h1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitH1(HTMLGrammarParser.H1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#h2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitH2(HTMLGrammarParser.H2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#h3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitH3(HTMLGrammarParser.H3Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBody(HTMLGrammarParser.BodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#elementos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElementos(HTMLGrammarParser.ElementosContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#img}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImg(HTMLGrammarParser.ImgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#altura}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAltura(HTMLGrammarParser.AlturaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#largura}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLargura(HTMLGrammarParser.LarguraContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link HTMLGrammarParser#img_src}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImg_src(HTMLGrammarParser.Img_srcContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link HTMLGrammarParser#listaOrdenada}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

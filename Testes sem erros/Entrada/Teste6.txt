@@ -1,0 +1,50 @@
+inicio{
+	tabela{
+		linha{
+		
+			coluna{
+			    data:"imagem 1";
+			}
+			coluna{
+				img{
+					src:"imagemTeste.jpg";
+					altura:"200px";
+					largura:"300px";
+				}	
+				
+			}
+			
+			coluna{
+				link{
+					data:"Link para imagem";
+					url:"www.google.com";
+				}
+			}
+		}
+		
+		<!-- comentario -->
+		
+		linha{
+			coluna{
+			    data:"imagem 2";
+			}
+			coluna{
+				img{
+					src:"imagemTeste2.jpg";
+					altura:"200px";
+					largura:"300px";
+				}	
+				
+			}
+			
+			coluna{
+				link{
+					data:"Link para imagem";
+					url:"www.google.com";
+				}
+			}
+		}
+		
+		}
+	}
+}

@@ -17,29 +17,38 @@ public class HTMLGrammarParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		INICIO=1, LINHA=2, COLUNA=3, COLUNA_TITULO=4, LISTA=5, LISTA2=6, DATA=7, 
-		DOIS_PONTOS=8, PONTO_VIRGULA=9, ASPAS_DUPLAS=10, ABRE_CHAVES=11, FECHA_CHAVES=12, 
-		TABELA=13, TIPO=14, LINK=15, URL=16, IDENT=17, WS=18, COMENTARIO=19, CADEIA=20, 
-		NUMERO=21, ASTERISCO=22;
+		INICIO=1, LINHA=2, WIDTH=3, HEIGHT=4, COLUNA=5, COLUNA_TITULO=6, LISTA=7, 
+		LISTA2=8, DATA=9, DOIS_PONTOS=10, PONTO_VIRGULA=11, ASPAS_DUPLAS=12, ABRE_CHAVES=13, 
+		FECHA_CHAVES=14, TABELA=15, TIPO=16, LINK=17, URL=18, IDENT=19, WS=20, 
+		CADEIA=21, NUMERO=22, ASTERISCO=23, ABRE_PARENTESIS=24, FECHA_PARENTESIS=25, 
+		ALTURA=26, LARGURA=27, H1=28, H2=29, H3=30, HEAD=31, IMG=32, SRC=33;
 	public static final int
-		RULE_programa = 0, RULE_listaOrdenada = 1, RULE_listaNOrdenada = 2, RULE_link = 3, 
-		RULE_url = 4, RULE_tipoMarcador = 5, RULE_tabela = 6, RULE_linha = 7, 
-		RULE_coluna = 8, RULE_coluna_cabecalho = 9, RULE_data = 10, RULE_item = 11;
+		RULE_programa = 0, RULE_head = 1, RULE_h1 = 2, RULE_h2 = 3, RULE_h3 = 4, 
+		RULE_body = 5, RULE_elementos = 6, RULE_img = 7, RULE_altura = 8, RULE_largura = 9, 
+		RULE_img_src = 10, RULE_listaOrdenada = 11, RULE_listaNOrdenada = 12, 
+		RULE_link = 13, RULE_url = 14, RULE_tipoMarcador = 15, RULE_tabela = 16, 
+		RULE_linha = 17, RULE_coluna = 18, RULE_coluna_cabecalho = 19, RULE_data = 20, 
+		RULE_item = 21;
 	public static final String[] ruleNames = {
-		"programa", "listaOrdenada", "listaNOrdenada", "link", "url", "tipoMarcador", 
-		"tabela", "linha", "coluna", "coluna_cabecalho", "data", "item"
+		"programa", "head", "h1", "h2", "h3", "body", "elementos", "img", "altura", 
+		"largura", "img_src", "listaOrdenada", "listaNOrdenada", "link", "url", 
+		"tipoMarcador", "tabela", "linha", "coluna", "coluna_cabecalho", "data", 
+		"item"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'inicio'", "'linha'", "'coluna'", "'coluna-titulo'", "'listaOrdenada'", 
-		"'listaNaoOrdenada'", "'data'", "':'", "';'", "'\"'", "'{'", "'}'", "'tabela'", 
-		"'tipo'", "'link'", "'url'", null, null, null, null, null, "'*'"
+		null, "'inicio'", "'linha'", "'widht'", "'height'", "'coluna'", "'coluna-titulo'", 
+		"'listaOrdenada'", "'listaNaoOrdenada'", "'data'", "':'", "';'", "'\"'", 
+		"'{'", "'}'", "'tabela'", "'tipo'", "'link'", "'url'", null, null, null, 
+		null, "'*'", "'('", "')'", "'altura'", "'largura'", "'h1'", "'h2'", "'h3'", 
+		"'head'", "'img'", "'src'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "INICIO", "LINHA", "COLUNA", "COLUNA_TITULO", "LISTA", "LISTA2", 
-		"DATA", "DOIS_PONTOS", "PONTO_VIRGULA", "ASPAS_DUPLAS", "ABRE_CHAVES", 
-		"FECHA_CHAVES", "TABELA", "TIPO", "LINK", "URL", "IDENT", "WS", "COMENTARIO", 
-		"CADEIA", "NUMERO", "ASTERISCO"
+		null, "INICIO", "LINHA", "WIDTH", "HEIGHT", "COLUNA", "COLUNA_TITULO", 
+		"LISTA", "LISTA2", "DATA", "DOIS_PONTOS", "PONTO_VIRGULA", "ASPAS_DUPLAS", 
+		"ABRE_CHAVES", "FECHA_CHAVES", "TABELA", "TIPO", "LINK", "URL", "IDENT", 
+		"WS", "CADEIA", "NUMERO", "ASTERISCO", "ABRE_PARENTESIS", "FECHA_PARENTESIS", 
+		"ALTURA", "LARGURA", "H1", "H2", "H3", "HEAD", "IMG", "SRC"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -98,30 +107,12 @@ public class HTMLGrammarParser extends Parser {
 	public static class ProgramaContext extends ParserRuleContext {
 		public TerminalNode INICIO() { return getToken(HTMLGrammarParser.INICIO, 0); }
 		public TerminalNode ABRE_CHAVES() { return getToken(HTMLGrammarParser.ABRE_CHAVES, 0); }
+		public BodyContext body() {
+			return getRuleContext(BodyContext.class,0);
+		}
 		public TerminalNode FECHA_CHAVES() { return getToken(HTMLGrammarParser.FECHA_CHAVES, 0); }
-		public List<TabelaContext> tabela() {
-			return getRuleContexts(TabelaContext.class);
-		}
-		public TabelaContext tabela(int i) {
-			return getRuleContext(TabelaContext.class,i);
-		}
-		public List<ListaOrdenadaContext> listaOrdenada() {
-			return getRuleContexts(ListaOrdenadaContext.class);
-		}
-		public ListaOrdenadaContext listaOrdenada(int i) {
-			return getRuleContext(ListaOrdenadaContext.class,i);
-		}
-		public List<ListaNOrdenadaContext> listaNOrdenada() {
-			return getRuleContexts(ListaNOrdenadaContext.class);
-		}
-		public ListaNOrdenadaContext listaNOrdenada(int i) {
-			return getRuleContext(ListaNOrdenadaContext.class,i);
-		}
-		public List<LinkContext> link() {
-			return getRuleContexts(LinkContext.class);
-		}
-		public LinkContext link(int i) {
-			return getRuleContext(LinkContext.class,i);
+		public HeadContext head() {
+			return getRuleContext(HeadContext.class,0);
 		}
 		public ProgramaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -149,51 +140,656 @@ public class HTMLGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24);
+			setState(44);
 			match(INICIO);
-			setState(25);
+			setState(45);
 			match(ABRE_CHAVES);
-			setState(32);
+			setState(47);
+			_la = _input.LA(1);
+			if (_la==HEAD) {
+				{
+				setState(46);
+				head();
+				}
+			}
+
+			setState(49);
+			body();
+			setState(50);
+			match(FECHA_CHAVES);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class HeadContext extends ParserRuleContext {
+		public TerminalNode HEAD() { return getToken(HTMLGrammarParser.HEAD, 0); }
+		public TerminalNode ABRE_CHAVES() { return getToken(HTMLGrammarParser.ABRE_CHAVES, 0); }
+		public TerminalNode FECHA_CHAVES() { return getToken(HTMLGrammarParser.FECHA_CHAVES, 0); }
+		public List<H1Context> h1() {
+			return getRuleContexts(H1Context.class);
+		}
+		public H1Context h1(int i) {
+			return getRuleContext(H1Context.class,i);
+		}
+		public List<H2Context> h2() {
+			return getRuleContexts(H2Context.class);
+		}
+		public H2Context h2(int i) {
+			return getRuleContext(H2Context.class,i);
+		}
+		public List<H3Context> h3() {
+			return getRuleContexts(H3Context.class);
+		}
+		public H3Context h3(int i) {
+			return getRuleContext(H3Context.class,i);
+		}
+		public HeadContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_head; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterHead(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitHead(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitHead(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final HeadContext head() throws RecognitionException {
+		HeadContext _localctx = new HeadContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_head);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(52);
+			match(HEAD);
+			setState(53);
+			match(ABRE_CHAVES);
+			setState(59);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LISTA) | (1L << LISTA2) | (1L << TABELA) | (1L << LINK))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << H1) | (1L << H2) | (1L << H3))) != 0)) {
 				{
-				setState(30);
+				setState(57);
 				switch (_input.LA(1)) {
-				case TABELA:
+				case H1:
 					{
-					setState(26);
-					tabela();
+					setState(54);
+					h1();
 					}
 					break;
-				case LISTA:
+				case H2:
 					{
-					setState(27);
-					listaOrdenada();
+					setState(55);
+					h2();
 					}
 					break;
-				case LISTA2:
+				case H3:
 					{
-					setState(28);
-					listaNOrdenada();
-					}
-					break;
-				case LINK:
-					{
-					setState(29);
-					link();
+					setState(56);
+					h3();
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(34);
+				setState(61);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(35);
+			setState(62);
 			match(FECHA_CHAVES);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class H1Context extends ParserRuleContext {
+		public TerminalNode H1() { return getToken(HTMLGrammarParser.H1, 0); }
+		public TerminalNode ABRE_CHAVES() { return getToken(HTMLGrammarParser.ABRE_CHAVES, 0); }
+		public DataContext data() {
+			return getRuleContext(DataContext.class,0);
+		}
+		public TerminalNode FECHA_CHAVES() { return getToken(HTMLGrammarParser.FECHA_CHAVES, 0); }
+		public H1Context(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_h1; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterH1(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitH1(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitH1(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final H1Context h1() throws RecognitionException {
+		H1Context _localctx = new H1Context(_ctx, getState());
+		enterRule(_localctx, 4, RULE_h1);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(64);
+			match(H1);
+			setState(65);
+			match(ABRE_CHAVES);
+			setState(66);
+			data();
+			setState(67);
+			match(FECHA_CHAVES);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class H2Context extends ParserRuleContext {
+		public TerminalNode H2() { return getToken(HTMLGrammarParser.H2, 0); }
+		public TerminalNode ABRE_CHAVES() { return getToken(HTMLGrammarParser.ABRE_CHAVES, 0); }
+		public DataContext data() {
+			return getRuleContext(DataContext.class,0);
+		}
+		public TerminalNode FECHA_CHAVES() { return getToken(HTMLGrammarParser.FECHA_CHAVES, 0); }
+		public H2Context(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_h2; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterH2(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitH2(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitH2(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final H2Context h2() throws RecognitionException {
+		H2Context _localctx = new H2Context(_ctx, getState());
+		enterRule(_localctx, 6, RULE_h2);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(69);
+			match(H2);
+			setState(70);
+			match(ABRE_CHAVES);
+			setState(71);
+			data();
+			setState(72);
+			match(FECHA_CHAVES);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class H3Context extends ParserRuleContext {
+		public TerminalNode H3() { return getToken(HTMLGrammarParser.H3, 0); }
+		public TerminalNode ABRE_CHAVES() { return getToken(HTMLGrammarParser.ABRE_CHAVES, 0); }
+		public DataContext data() {
+			return getRuleContext(DataContext.class,0);
+		}
+		public TerminalNode FECHA_CHAVES() { return getToken(HTMLGrammarParser.FECHA_CHAVES, 0); }
+		public H3Context(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_h3; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterH3(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitH3(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitH3(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final H3Context h3() throws RecognitionException {
+		H3Context _localctx = new H3Context(_ctx, getState());
+		enterRule(_localctx, 8, RULE_h3);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(74);
+			match(H3);
+			setState(75);
+			match(ABRE_CHAVES);
+			setState(76);
+			data();
+			setState(77);
+			match(FECHA_CHAVES);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BodyContext extends ParserRuleContext {
+		public List<ElementosContext> elementos() {
+			return getRuleContexts(ElementosContext.class);
+		}
+		public ElementosContext elementos(int i) {
+			return getRuleContext(ElementosContext.class,i);
+		}
+		public BodyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_body; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterBody(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitBody(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitBody(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final BodyContext body() throws RecognitionException {
+		BodyContext _localctx = new BodyContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_body);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(82);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LISTA) | (1L << LISTA2) | (1L << TABELA) | (1L << LINK) | (1L << CADEIA) | (1L << IMG))) != 0)) {
+				{
+				{
+				setState(79);
+				elementos();
+				}
+				}
+				setState(84);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ElementosContext extends ParserRuleContext {
+		public int expr = 0;
+		public TabelaContext tabela() {
+			return getRuleContext(TabelaContext.class,0);
+		}
+		public ListaOrdenadaContext listaOrdenada() {
+			return getRuleContext(ListaOrdenadaContext.class,0);
+		}
+		public ListaNOrdenadaContext listaNOrdenada() {
+			return getRuleContext(ListaNOrdenadaContext.class,0);
+		}
+		public LinkContext link() {
+			return getRuleContext(LinkContext.class,0);
+		}
+		public ImgContext img() {
+			return getRuleContext(ImgContext.class,0);
+		}
+		public TerminalNode CADEIA() { return getToken(HTMLGrammarParser.CADEIA, 0); }
+		public ElementosContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_elementos; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterElementos(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitElementos(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitElementos(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final ElementosContext elementos() throws RecognitionException {
+		ElementosContext _localctx = new ElementosContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_elementos);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(92);
+			switch (_input.LA(1)) {
+			case TABELA:
+				{
+				setState(85);
+				tabela();
+				}
+				break;
+			case LISTA:
+				{
+				setState(86);
+				listaOrdenada();
+				}
+				break;
+			case LISTA2:
+				{
+				setState(87);
+				listaNOrdenada();
+				}
+				break;
+			case LINK:
+				{
+				setState(88);
+				link();
+				}
+				break;
+			case IMG:
+				{
+				setState(89);
+				img();
+				}
+				break;
+			case CADEIA:
+				{
+				setState(90);
+				match(CADEIA);
+				((ElementosContext)_localctx).expr = 1;
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ImgContext extends ParserRuleContext {
+		public TerminalNode IMG() { return getToken(HTMLGrammarParser.IMG, 0); }
+		public TerminalNode ABRE_CHAVES() { return getToken(HTMLGrammarParser.ABRE_CHAVES, 0); }
+		public Img_srcContext img_src() {
+			return getRuleContext(Img_srcContext.class,0);
+		}
+		public AlturaContext altura() {
+			return getRuleContext(AlturaContext.class,0);
+		}
+		public LarguraContext largura() {
+			return getRuleContext(LarguraContext.class,0);
+		}
+		public TerminalNode FECHA_CHAVES() { return getToken(HTMLGrammarParser.FECHA_CHAVES, 0); }
+		public ImgContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_img; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterImg(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitImg(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitImg(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final ImgContext img() throws RecognitionException {
+		ImgContext _localctx = new ImgContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_img);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(94);
+			match(IMG);
+			setState(95);
+			match(ABRE_CHAVES);
+			setState(96);
+			img_src();
+			setState(97);
+			altura();
+			setState(98);
+			largura();
+			setState(99);
+			match(FECHA_CHAVES);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class AlturaContext extends ParserRuleContext {
+		public TerminalNode ALTURA() { return getToken(HTMLGrammarParser.ALTURA, 0); }
+		public TerminalNode DOIS_PONTOS() { return getToken(HTMLGrammarParser.DOIS_PONTOS, 0); }
+		public TerminalNode CADEIA() { return getToken(HTMLGrammarParser.CADEIA, 0); }
+		public TerminalNode PONTO_VIRGULA() { return getToken(HTMLGrammarParser.PONTO_VIRGULA, 0); }
+		public AlturaContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_altura; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterAltura(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitAltura(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitAltura(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final AlturaContext altura() throws RecognitionException {
+		AlturaContext _localctx = new AlturaContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_altura);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(101);
+			match(ALTURA);
+			setState(102);
+			match(DOIS_PONTOS);
+			setState(103);
+			match(CADEIA);
+			setState(104);
+			match(PONTO_VIRGULA);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class LarguraContext extends ParserRuleContext {
+		public TerminalNode LARGURA() { return getToken(HTMLGrammarParser.LARGURA, 0); }
+		public TerminalNode DOIS_PONTOS() { return getToken(HTMLGrammarParser.DOIS_PONTOS, 0); }
+		public TerminalNode CADEIA() { return getToken(HTMLGrammarParser.CADEIA, 0); }
+		public TerminalNode PONTO_VIRGULA() { return getToken(HTMLGrammarParser.PONTO_VIRGULA, 0); }
+		public LarguraContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_largura; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterLargura(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitLargura(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitLargura(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final LarguraContext largura() throws RecognitionException {
+		LarguraContext _localctx = new LarguraContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_largura);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(106);
+			match(LARGURA);
+			setState(107);
+			match(DOIS_PONTOS);
+			setState(108);
+			match(CADEIA);
+			setState(109);
+			match(PONTO_VIRGULA);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Img_srcContext extends ParserRuleContext {
+		public TerminalNode SRC() { return getToken(HTMLGrammarParser.SRC, 0); }
+		public TerminalNode DOIS_PONTOS() { return getToken(HTMLGrammarParser.DOIS_PONTOS, 0); }
+		public TerminalNode CADEIA() { return getToken(HTMLGrammarParser.CADEIA, 0); }
+		public TerminalNode PONTO_VIRGULA() { return getToken(HTMLGrammarParser.PONTO_VIRGULA, 0); }
+		public Img_srcContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_img_src; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).enterImg_src(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof HTMLGrammarListener ) ((HTMLGrammarListener)listener).exitImg_src(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HTMLGrammarVisitor ) return ((HTMLGrammarVisitor<? extends T>)visitor).visitImg_src(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Img_srcContext img_src() throws RecognitionException {
+		Img_srcContext _localctx = new Img_srcContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_img_src);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(111);
+			match(SRC);
+			setState(112);
+			match(DOIS_PONTOS);
+			setState(113);
+			match(CADEIA);
+			setState(114);
+			match(PONTO_VIRGULA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -241,32 +837,32 @@ public class HTMLGrammarParser extends Parser {
 
 	public final ListaOrdenadaContext listaOrdenada() throws RecognitionException {
 		ListaOrdenadaContext _localctx = new ListaOrdenadaContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_listaOrdenada);
+		enterRule(_localctx, 22, RULE_listaOrdenada);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(37);
+			setState(116);
 			match(LISTA);
-			setState(38);
+			setState(117);
 			match(ABRE_CHAVES);
-			setState(39);
+			setState(118);
 			tipoMarcador();
-			setState(43);
+			setState(122);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==ASTERISCO) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LISTA) | (1L << LISTA2) | (1L << PONTO_VIRGULA) | (1L << LINK) | (1L << ASTERISCO))) != 0)) {
 				{
 				{
-				setState(40);
+				setState(119);
 				item();
 				}
 				}
-				setState(45);
+				setState(124);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(46);
+			setState(125);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -315,32 +911,32 @@ public class HTMLGrammarParser extends Parser {
 
 	public final ListaNOrdenadaContext listaNOrdenada() throws RecognitionException {
 		ListaNOrdenadaContext _localctx = new ListaNOrdenadaContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_listaNOrdenada);
+		enterRule(_localctx, 24, RULE_listaNOrdenada);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(127);
 			match(LISTA2);
-			setState(49);
+			setState(128);
 			match(ABRE_CHAVES);
-			setState(50);
+			setState(129);
 			tipoMarcador();
-			setState(54);
+			setState(133);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==ASTERISCO) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LISTA) | (1L << LISTA2) | (1L << PONTO_VIRGULA) | (1L << LINK) | (1L << ASTERISCO))) != 0)) {
 				{
 				{
-				setState(51);
+				setState(130);
 				item();
 				}
 				}
-				setState(56);
+				setState(135);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(57);
+			setState(136);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -386,19 +982,19 @@ public class HTMLGrammarParser extends Parser {
 
 	public final LinkContext link() throws RecognitionException {
 		LinkContext _localctx = new LinkContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_link);
+		enterRule(_localctx, 26, RULE_link);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(59);
+			setState(138);
 			match(LINK);
-			setState(60);
+			setState(139);
 			match(ABRE_CHAVES);
-			setState(61);
+			setState(140);
 			data();
-			setState(62);
+			setState(141);
 			url();
-			setState(63);
+			setState(142);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -439,17 +1035,17 @@ public class HTMLGrammarParser extends Parser {
 
 	public final UrlContext url() throws RecognitionException {
 		UrlContext _localctx = new UrlContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_url);
+		enterRule(_localctx, 28, RULE_url);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(65);
+			setState(144);
 			match(URL);
-			setState(66);
+			setState(145);
 			match(DOIS_PONTOS);
-			setState(67);
+			setState(146);
 			match(CADEIA);
-			setState(68);
+			setState(147);
 			match(PONTO_VIRGULA);
 			}
 		}
@@ -490,17 +1086,17 @@ public class HTMLGrammarParser extends Parser {
 
 	public final TipoMarcadorContext tipoMarcador() throws RecognitionException {
 		TipoMarcadorContext _localctx = new TipoMarcadorContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_tipoMarcador);
+		enterRule(_localctx, 30, RULE_tipoMarcador);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(70);
+			setState(149);
 			match(TIPO);
-			setState(71);
+			setState(150);
 			match(DOIS_PONTOS);
-			setState(72);
+			setState(151);
 			match(CADEIA);
-			setState(73);
+			setState(152);
 			match(PONTO_VIRGULA);
 			}
 		}
@@ -546,30 +1142,30 @@ public class HTMLGrammarParser extends Parser {
 
 	public final TabelaContext tabela() throws RecognitionException {
 		TabelaContext _localctx = new TabelaContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_tabela);
+		enterRule(_localctx, 32, RULE_tabela);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(75);
+			setState(154);
 			match(TABELA);
-			setState(76);
+			setState(155);
 			match(ABRE_CHAVES);
-			setState(80);
+			setState(159);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LINHA) {
 				{
 				{
-				setState(77);
+				setState(156);
 				linha();
 				}
 				}
-				setState(82);
+				setState(161);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(83);
+			setState(162);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -621,31 +1217,31 @@ public class HTMLGrammarParser extends Parser {
 
 	public final LinhaContext linha() throws RecognitionException {
 		LinhaContext _localctx = new LinhaContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_linha);
+		enterRule(_localctx, 34, RULE_linha);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(85);
+			setState(164);
 			match(LINHA);
-			setState(86);
+			setState(165);
 			match(ABRE_CHAVES);
-			setState(91);
+			setState(170);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COLUNA || _la==COLUNA_TITULO) {
 				{
-				setState(89);
+				setState(168);
 				switch (_input.LA(1)) {
 				case COLUNA:
 					{
-					setState(87);
+					setState(166);
 					coluna();
 					}
 					break;
 				case COLUNA_TITULO:
 					{
-					setState(88);
+					setState(167);
 					coluna_cabecalho();
 					}
 					break;
@@ -653,11 +1249,11 @@ public class HTMLGrammarParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(93);
+				setState(172);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(94);
+			setState(173);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -700,17 +1296,17 @@ public class HTMLGrammarParser extends Parser {
 
 	public final ColunaContext coluna() throws RecognitionException {
 		ColunaContext _localctx = new ColunaContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_coluna);
+		enterRule(_localctx, 36, RULE_coluna);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(175);
 			match(COLUNA);
-			setState(97);
+			setState(176);
 			match(ABRE_CHAVES);
-			setState(98);
+			setState(177);
 			data();
-			setState(99);
+			setState(178);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -753,17 +1349,17 @@ public class HTMLGrammarParser extends Parser {
 
 	public final Coluna_cabecalhoContext coluna_cabecalho() throws RecognitionException {
 		Coluna_cabecalhoContext _localctx = new Coluna_cabecalhoContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_coluna_cabecalho);
+		enterRule(_localctx, 38, RULE_coluna_cabecalho);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(101);
+			setState(180);
 			match(COLUNA_TITULO);
-			setState(102);
+			setState(181);
 			match(ABRE_CHAVES);
-			setState(103);
+			setState(182);
 			data();
-			setState(104);
+			setState(183);
 			match(FECHA_CHAVES);
 			}
 		}
@@ -779,11 +1375,11 @@ public class HTMLGrammarParser extends Parser {
 	}
 
 	public static class DataContext extends ParserRuleContext {
-		public int expr;
+		public int expr = 0;
 		public TerminalNode DATA() { return getToken(HTMLGrammarParser.DATA, 0); }
 		public TerminalNode DOIS_PONTOS() { return getToken(HTMLGrammarParser.DOIS_PONTOS, 0); }
-		public TerminalNode PONTO_VIRGULA() { return getToken(HTMLGrammarParser.PONTO_VIRGULA, 0); }
 		public TerminalNode CADEIA() { return getToken(HTMLGrammarParser.CADEIA, 0); }
+		public TerminalNode PONTO_VIRGULA() { return getToken(HTMLGrammarParser.PONTO_VIRGULA, 0); }
 		public ListaOrdenadaContext listaOrdenada() {
 			return getRuleContext(ListaOrdenadaContext.class,0);
 		}
@@ -792,6 +1388,9 @@ public class HTMLGrammarParser extends Parser {
 		}
 		public LinkContext link() {
 			return getRuleContext(LinkContext.class,0);
+		}
+		public ImgContext img() {
+			return getRuleContext(ImgContext.class,0);
 		}
 		public DataContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -814,53 +1413,54 @@ public class HTMLGrammarParser extends Parser {
 
 	public final DataContext data() throws RecognitionException {
 		DataContext _localctx = new DataContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_data);
+		enterRule(_localctx, 40, RULE_data);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(106);
-			match(DATA);
-			setState(107);
-			match(DOIS_PONTOS);
-			setState(120);
+			setState(194);
 			switch (_input.LA(1)) {
-			case CADEIA:
+			case DATA:
+				enterOuterAlt(_localctx, 1);
 				{
-				setState(108);
+				setState(185);
+				match(DATA);
+				setState(186);
+				match(DOIS_PONTOS);
+				setState(187);
 				match(CADEIA);
 				((DataContext)_localctx).expr =  1;
+				setState(189);
+				match(PONTO_VIRGULA);
 				}
 				break;
 			case LISTA:
+				enterOuterAlt(_localctx, 2);
 				{
-				setState(110);
+				setState(190);
 				listaOrdenada();
-				((DataContext)_localctx).expr =  2;
 				}
 				break;
 			case LISTA2:
+				enterOuterAlt(_localctx, 3);
 				{
-				setState(113);
+				setState(191);
 				listaNOrdenada();
-				((DataContext)_localctx).expr =  2;
 				}
 				break;
 			case LINK:
+				enterOuterAlt(_localctx, 4);
 				{
-				setState(116);
+				setState(192);
 				link();
-				((DataContext)_localctx).expr = 2;
 				}
 				break;
-			case PONTO_VIRGULA:
+			case IMG:
+				enterOuterAlt(_localctx, 5);
 				{
+				setState(193);
+				img();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-			setState(122);
-			match(PONTO_VIRGULA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -876,8 +1476,11 @@ public class HTMLGrammarParser extends Parser {
 
 	public static class ItemContext extends ParserRuleContext {
 		public int expr = 0;
-		public TerminalNode ASTERISCO() { return getToken(HTMLGrammarParser.ASTERISCO, 0); }
 		public TerminalNode PONTO_VIRGULA() { return getToken(HTMLGrammarParser.PONTO_VIRGULA, 0); }
+		public List<TerminalNode> ASTERISCO() { return getTokens(HTMLGrammarParser.ASTERISCO); }
+		public TerminalNode ASTERISCO(int i) {
+			return getToken(HTMLGrammarParser.ASTERISCO, i);
+		}
 		public List<TerminalNode> CADEIA() { return getTokens(HTMLGrammarParser.CADEIA); }
 		public TerminalNode CADEIA(int i) {
 			return getToken(HTMLGrammarParser.CADEIA, i);
@@ -921,42 +1524,42 @@ public class HTMLGrammarParser extends Parser {
 
 	public final ItemContext item() throws RecognitionException {
 		ItemContext _localctx = new ItemContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_item);
+		enterRule(_localctx, 42, RULE_item);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(124);
-			match(ASTERISCO);
-			setState(132);
+			setState(204);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LISTA) | (1L << LISTA2) | (1L << LINK) | (1L << CADEIA))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LISTA) | (1L << LISTA2) | (1L << LINK) | (1L << ASTERISCO))) != 0)) {
 				{
-				setState(130);
+				setState(202);
 				switch (_input.LA(1)) {
-				case CADEIA:
+				case ASTERISCO:
 					{
-					setState(125);
+					setState(196);
+					match(ASTERISCO);
+					setState(197);
 					match(CADEIA);
 					((ItemContext)_localctx).expr = 1;
 					}
 					break;
 				case LISTA:
 					{
-					setState(127);
+					setState(199);
 					listaOrdenada();
 					}
 					break;
 				case LISTA2:
 					{
-					setState(128);
+					setState(200);
 					listaNOrdenada();
 					}
 					break;
 				case LINK:
 					{
-					setState(129);
+					setState(201);
 					link();
 					}
 					break;
@@ -964,11 +1567,11 @@ public class HTMLGrammarParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(134);
+				setState(206);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(135);
+			setState(207);
 			match(PONTO_VIRGULA);
 			}
 		}
@@ -984,42 +1587,69 @@ public class HTMLGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\30\u008c\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\3\2\3\2\3\2\3\2\3\2\3\2\7\2!\n\2\f\2\16\2$\13\2"+
-		"\3\2\3\2\3\3\3\3\3\3\3\3\7\3,\n\3\f\3\16\3/\13\3\3\3\3\3\3\4\3\4\3\4\3"+
-		"\4\7\4\67\n\4\f\4\16\4:\13\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3"+
-		"\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\b\7\bQ\n\b\f\b\16\bT\13\b\3\b"+
-		"\3\b\3\t\3\t\3\t\3\t\7\t\\\n\t\f\t\16\t_\13\t\3\t\3\t\3\n\3\n\3\n\3\n"+
-		"\3\n\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f"+
-		"\3\f\3\f\3\f\3\f\5\f{\n\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\7\r\u0085\n"+
-		"\r\f\r\16\r\u0088\13\r\3\r\3\r\3\r\2\2\16\2\4\6\b\n\f\16\20\22\24\26\30"+
-		"\2\2\u0090\2\32\3\2\2\2\4\'\3\2\2\2\6\62\3\2\2\2\b=\3\2\2\2\nC\3\2\2\2"+
-		"\fH\3\2\2\2\16M\3\2\2\2\20W\3\2\2\2\22b\3\2\2\2\24g\3\2\2\2\26l\3\2\2"+
-		"\2\30~\3\2\2\2\32\33\7\3\2\2\33\"\7\r\2\2\34!\5\16\b\2\35!\5\4\3\2\36"+
-		"!\5\6\4\2\37!\5\b\5\2 \34\3\2\2\2 \35\3\2\2\2 \36\3\2\2\2 \37\3\2\2\2"+
-		"!$\3\2\2\2\" \3\2\2\2\"#\3\2\2\2#%\3\2\2\2$\"\3\2\2\2%&\7\16\2\2&\3\3"+
-		"\2\2\2\'(\7\7\2\2()\7\r\2\2)-\5\f\7\2*,\5\30\r\2+*\3\2\2\2,/\3\2\2\2-"+
-		"+\3\2\2\2-.\3\2\2\2.\60\3\2\2\2/-\3\2\2\2\60\61\7\16\2\2\61\5\3\2\2\2"+
-		"\62\63\7\b\2\2\63\64\7\r\2\2\648\5\f\7\2\65\67\5\30\r\2\66\65\3\2\2\2"+
-		"\67:\3\2\2\28\66\3\2\2\289\3\2\2\29;\3\2\2\2:8\3\2\2\2;<\7\16\2\2<\7\3"+
-		"\2\2\2=>\7\21\2\2>?\7\r\2\2?@\5\26\f\2@A\5\n\6\2AB\7\16\2\2B\t\3\2\2\2"+
-		"CD\7\22\2\2DE\7\n\2\2EF\7\26\2\2FG\7\13\2\2G\13\3\2\2\2HI\7\20\2\2IJ\7"+
-		"\n\2\2JK\7\26\2\2KL\7\13\2\2L\r\3\2\2\2MN\7\17\2\2NR\7\r\2\2OQ\5\20\t"+
-		"\2PO\3\2\2\2QT\3\2\2\2RP\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7\16"+
-		"\2\2V\17\3\2\2\2WX\7\4\2\2X]\7\r\2\2Y\\\5\22\n\2Z\\\5\24\13\2[Y\3\2\2"+
-		"\2[Z\3\2\2\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^`\3\2\2\2_]\3\2\2\2`a\7\16"+
-		"\2\2a\21\3\2\2\2bc\7\5\2\2cd\7\r\2\2de\5\26\f\2ef\7\16\2\2f\23\3\2\2\2"+
-		"gh\7\6\2\2hi\7\r\2\2ij\5\26\f\2jk\7\16\2\2k\25\3\2\2\2lm\7\t\2\2mz\7\n"+
-		"\2\2no\7\26\2\2o{\b\f\1\2pq\5\4\3\2qr\b\f\1\2r{\3\2\2\2st\5\6\4\2tu\b"+
-		"\f\1\2u{\3\2\2\2vw\5\b\5\2wx\b\f\1\2x{\3\2\2\2y{\3\2\2\2zn\3\2\2\2zp\3"+
-		"\2\2\2zs\3\2\2\2zv\3\2\2\2zy\3\2\2\2{|\3\2\2\2|}\7\13\2\2}\27\3\2\2\2"+
-		"~\u0086\7\30\2\2\177\u0080\7\26\2\2\u0080\u0085\b\r\1\2\u0081\u0085\5"+
-		"\4\3\2\u0082\u0085\5\6\4\2\u0083\u0085\5\b\5\2\u0084\177\3\2\2\2\u0084"+
-		"\u0081\3\2\2\2\u0084\u0082\3\2\2\2\u0084\u0083\3\2\2\2\u0085\u0088\3\2"+
-		"\2\2\u0086\u0084\3\2\2\2\u0086\u0087\3\2\2\2\u0087\u0089\3\2\2\2\u0088"+
-		"\u0086\3\2\2\2\u0089\u008a\7\13\2\2\u008a\31\3\2\2\2\f \"-8R[]z\u0084"+
-		"\u0086";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3#\u00d4\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\3\2\5\2\62"+
+		"\n\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\7\3<\n\3\f\3\16\3?\13\3\3\3\3\3\3"+
+		"\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\7\7S\n"+
+		"\7\f\7\16\7V\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b_\n\b\3\t\3\t\3\t\3\t"+
+		"\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f"+
+		"\3\f\3\f\3\r\3\r\3\r\3\r\7\r{\n\r\f\r\16\r~\13\r\3\r\3\r\3\16\3\16\3\16"+
+		"\3\16\7\16\u0086\n\16\f\16\16\16\u0089\13\16\3\16\3\16\3\17\3\17\3\17"+
+		"\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\22"+
+		"\3\22\3\22\7\22\u00a0\n\22\f\22\16\22\u00a3\13\22\3\22\3\22\3\23\3\23"+
+		"\3\23\3\23\7\23\u00ab\n\23\f\23\16\23\u00ae\13\23\3\23\3\23\3\24\3\24"+
+		"\3\24\3\24\3\24\3\25\3\25\3\25\3\25\3\25\3\26\3\26\3\26\3\26\3\26\3\26"+
+		"\3\26\3\26\3\26\5\26\u00c5\n\26\3\27\3\27\3\27\3\27\3\27\3\27\7\27\u00cd"+
+		"\n\27\f\27\16\27\u00d0\13\27\3\27\3\27\3\27\2\2\30\2\4\6\b\n\f\16\20\22"+
+		"\24\26\30\32\34\36 \"$&(*,\2\2\u00d4\2.\3\2\2\2\4\66\3\2\2\2\6B\3\2\2"+
+		"\2\bG\3\2\2\2\nL\3\2\2\2\fT\3\2\2\2\16^\3\2\2\2\20`\3\2\2\2\22g\3\2\2"+
+		"\2\24l\3\2\2\2\26q\3\2\2\2\30v\3\2\2\2\32\u0081\3\2\2\2\34\u008c\3\2\2"+
+		"\2\36\u0092\3\2\2\2 \u0097\3\2\2\2\"\u009c\3\2\2\2$\u00a6\3\2\2\2&\u00b1"+
+		"\3\2\2\2(\u00b6\3\2\2\2*\u00c4\3\2\2\2,\u00ce\3\2\2\2./\7\3\2\2/\61\7"+
+		"\17\2\2\60\62\5\4\3\2\61\60\3\2\2\2\61\62\3\2\2\2\62\63\3\2\2\2\63\64"+
+		"\5\f\7\2\64\65\7\20\2\2\65\3\3\2\2\2\66\67\7!\2\2\67=\7\17\2\28<\5\6\4"+
+		"\29<\5\b\5\2:<\5\n\6\2;8\3\2\2\2;9\3\2\2\2;:\3\2\2\2<?\3\2\2\2=;\3\2\2"+
+		"\2=>\3\2\2\2>@\3\2\2\2?=\3\2\2\2@A\7\20\2\2A\5\3\2\2\2BC\7\36\2\2CD\7"+
+		"\17\2\2DE\5*\26\2EF\7\20\2\2F\7\3\2\2\2GH\7\37\2\2HI\7\17\2\2IJ\5*\26"+
+		"\2JK\7\20\2\2K\t\3\2\2\2LM\7 \2\2MN\7\17\2\2NO\5*\26\2OP\7\20\2\2P\13"+
+		"\3\2\2\2QS\5\16\b\2RQ\3\2\2\2SV\3\2\2\2TR\3\2\2\2TU\3\2\2\2U\r\3\2\2\2"+
+		"VT\3\2\2\2W_\5\"\22\2X_\5\30\r\2Y_\5\32\16\2Z_\5\34\17\2[_\5\20\t\2\\"+
+		"]\7\27\2\2]_\b\b\1\2^W\3\2\2\2^X\3\2\2\2^Y\3\2\2\2^Z\3\2\2\2^[\3\2\2\2"+
+		"^\\\3\2\2\2_\17\3\2\2\2`a\7\"\2\2ab\7\17\2\2bc\5\26\f\2cd\5\22\n\2de\5"+
+		"\24\13\2ef\7\20\2\2f\21\3\2\2\2gh\7\34\2\2hi\7\f\2\2ij\7\27\2\2jk\7\r"+
+		"\2\2k\23\3\2\2\2lm\7\35\2\2mn\7\f\2\2no\7\27\2\2op\7\r\2\2p\25\3\2\2\2"+
+		"qr\7#\2\2rs\7\f\2\2st\7\27\2\2tu\7\r\2\2u\27\3\2\2\2vw\7\t\2\2wx\7\17"+
+		"\2\2x|\5 \21\2y{\5,\27\2zy\3\2\2\2{~\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\177"+
+		"\3\2\2\2~|\3\2\2\2\177\u0080\7\20\2\2\u0080\31\3\2\2\2\u0081\u0082\7\n"+
+		"\2\2\u0082\u0083\7\17\2\2\u0083\u0087\5 \21\2\u0084\u0086\5,\27\2\u0085"+
+		"\u0084\3\2\2\2\u0086\u0089\3\2\2\2\u0087\u0085\3\2\2\2\u0087\u0088\3\2"+
+		"\2\2\u0088\u008a\3\2\2\2\u0089\u0087\3\2\2\2\u008a\u008b\7\20\2\2\u008b"+
+		"\33\3\2\2\2\u008c\u008d\7\23\2\2\u008d\u008e\7\17\2\2\u008e\u008f\5*\26"+
+		"\2\u008f\u0090\5\36\20\2\u0090\u0091\7\20\2\2\u0091\35\3\2\2\2\u0092\u0093"+
+		"\7\24\2\2\u0093\u0094\7\f\2\2\u0094\u0095\7\27\2\2\u0095\u0096\7\r\2\2"+
+		"\u0096\37\3\2\2\2\u0097\u0098\7\22\2\2\u0098\u0099\7\f\2\2\u0099\u009a"+
+		"\7\27\2\2\u009a\u009b\7\r\2\2\u009b!\3\2\2\2\u009c\u009d\7\21\2\2\u009d"+
+		"\u00a1\7\17\2\2\u009e\u00a0\5$\23\2\u009f\u009e\3\2\2\2\u00a0\u00a3\3"+
+		"\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2\u00a4\3\2\2\2\u00a3"+
+		"\u00a1\3\2\2\2\u00a4\u00a5\7\20\2\2\u00a5#\3\2\2\2\u00a6\u00a7\7\4\2\2"+
+		"\u00a7\u00ac\7\17\2\2\u00a8\u00ab\5&\24\2\u00a9\u00ab\5(\25\2\u00aa\u00a8"+
+		"\3\2\2\2\u00aa\u00a9\3\2\2\2\u00ab\u00ae\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ac"+
+		"\u00ad\3\2\2\2\u00ad\u00af\3\2\2\2\u00ae\u00ac\3\2\2\2\u00af\u00b0\7\20"+
+		"\2\2\u00b0%\3\2\2\2\u00b1\u00b2\7\7\2\2\u00b2\u00b3\7\17\2\2\u00b3\u00b4"+
+		"\5*\26\2\u00b4\u00b5\7\20\2\2\u00b5\'\3\2\2\2\u00b6\u00b7\7\b\2\2\u00b7"+
+		"\u00b8\7\17\2\2\u00b8\u00b9\5*\26\2\u00b9\u00ba\7\20\2\2\u00ba)\3\2\2"+
+		"\2\u00bb\u00bc\7\13\2\2\u00bc\u00bd\7\f\2\2\u00bd\u00be\7\27\2\2\u00be"+
+		"\u00bf\b\26\1\2\u00bf\u00c5\7\r\2\2\u00c0\u00c5\5\30\r\2\u00c1\u00c5\5"+
+		"\32\16\2\u00c2\u00c5\5\34\17\2\u00c3\u00c5\5\20\t\2\u00c4\u00bb\3\2\2"+
+		"\2\u00c4\u00c0\3\2\2\2\u00c4\u00c1\3\2\2\2\u00c4\u00c2\3\2\2\2\u00c4\u00c3"+
+		"\3\2\2\2\u00c5+\3\2\2\2\u00c6\u00c7\7\31\2\2\u00c7\u00c8\7\27\2\2\u00c8"+
+		"\u00cd\b\27\1\2\u00c9\u00cd\5\30\r\2\u00ca\u00cd\5\32\16\2\u00cb\u00cd"+
+		"\5\34\17\2\u00cc\u00c6\3\2\2\2\u00cc\u00c9\3\2\2\2\u00cc\u00ca\3\2\2\2"+
+		"\u00cc\u00cb\3\2\2\2\u00cd\u00d0\3\2\2\2\u00ce\u00cc\3\2\2\2\u00ce\u00cf"+
+		"\3\2\2\2\u00cf\u00d1\3\2\2\2\u00d0\u00ce\3\2\2\2\u00d1\u00d2\7\r\2\2\u00d2"+
+		"-\3\2\2\2\17\61;=T^|\u0087\u00a1\u00aa\u00ac\u00c4\u00cc\u00ce";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

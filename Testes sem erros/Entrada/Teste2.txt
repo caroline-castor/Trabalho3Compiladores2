@@ -1,0 +1,302 @@
+inicio{
+
+head{
+	h1{
+		data:"Teste 2 - Tabela";
+	}
+	
+}
+
+tabela{
+
+	linha{
+		coluna-titulo{
+			data:"Operando1";
+		}
+
+		coluna-titulo{
+			data:"X";
+		}
+
+		coluna-titulo{
+			data:"Operando2";
+		}
+
+		coluna-titulo{
+			data:"=";
+		}
+
+		coluna-titulo{
+			data:"Resultado";
+		}
+	}
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"0";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"0";
+		}
+	}
+
+
+
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"1";
+		}
+	}
+
+
+
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"2";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"2";
+		}
+	}
+
+	
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"3";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"3";
+		}
+	}
+
+
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"4";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"4";
+		}
+	}
+
+	
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"5";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"5";
+		}
+	}
+
+	
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"6";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"6";
+		}
+	}
+
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"7";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"7";
+		}
+	}
+
+
+	
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"8";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"8";
+		}
+	}
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"9";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"9";
+		}
+	}
+
+	linha{
+		coluna{
+			data:"1";
+		}
+
+		coluna{
+			data:"X";
+		}
+
+		coluna{
+			data:"10";
+		}
+
+		coluna{
+			data:"=";
+		}
+
+		coluna{
+			data:"10";
+		}
+	}
+}
+
+}

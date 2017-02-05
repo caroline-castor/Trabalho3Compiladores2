@@ -1,0 +1,26 @@
+inicio{
+
+head{
+	
+	h3{
+		data:"Teste 3 - lista";
+	}
+}
+
+listaNaoOrdenada{
+	tipo:"disc";
+	*"item1";
+	*"item2";
+	listaOrdenada{
+		tipo:"1";
+		*"subitem item 2";
+		*"subitem item 2";
+		listaNaoOrdenada{
+			tipo:"bullet";
+			*"subsubitem";
+			
+		};
+	};
+}
+
+}

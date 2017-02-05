@@ -39,15 +39,65 @@ public class GeradorDeCodigo extends HTMLGrammarBaseListener {
 
     @Override
     public void exitPrograma(HTMLGrammarParser.ProgramaContext ctx) {
-        saida.println("</BODY>");
         saida.println("</HTML>");
     }
 
     @Override
     public void enterPrograma(HTMLGrammarParser.ProgramaContext ctx) {
         saida.println("<HTML>");
+        
+    }
+
+    @Override
+    public void exitBody(HTMLGrammarParser.BodyContext ctx) {
+        saida.println("</BODY>");
+    }
+
+    @Override
+    public void enterBody(HTMLGrammarParser.BodyContext ctx) {
         saida.println("<BODY>");
     }
+
+    @Override
+    public void exitHead(HTMLGrammarParser.HeadContext ctx) {
+        saida.println("</HEAD>");
+    }
+
+    @Override
+    public void enterHead(HTMLGrammarParser.HeadContext ctx) {
+        saida.println("<HEAD>");
+    }
+
+    @Override
+    public void exitH3(HTMLGrammarParser.H3Context ctx) {
+        saida.println("</H3>");
+    }
+
+    @Override
+    public void enterH3(HTMLGrammarParser.H3Context ctx) {
+        saida.println("<H3>"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
+    }
+
+    @Override
+    public void exitH2(HTMLGrammarParser.H2Context ctx) {
+        saida.println("</H2>");
+    }
+
+    @Override
+    public void enterH2(HTMLGrammarParser.H2Context ctx) {
+        saida.println("<H2>"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
+    }
+
+    @Override
+    public void exitH1(HTMLGrammarParser.H1Context ctx) {
+        saida.println("</H1>");
+    }
+
+    @Override
+    public void enterH1(HTMLGrammarParser.H1Context ctx) {
+        saida.println("<H1>"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
+    }
+    
 
     @Override
     public void exitTabela(HTMLGrammarParser.TabelaContext ctx) {
@@ -61,7 +111,14 @@ public class GeradorDeCodigo extends HTMLGrammarBaseListener {
         
     }   
 
-  
+    @Override
+    public void enterElementos(HTMLGrammarParser.ElementosContext ctx) {
+       if(ctx.expr==1){
+           saida.println(ctx.CADEIA().getText().replace("\"", ""));
+       }
+    }
+
+    
 
     @Override
     public void exitColuna_cabecalho(HTMLGrammarParser.Coluna_cabecalhoContext ctx) {
@@ -106,10 +163,9 @@ public class GeradorDeCodigo extends HTMLGrammarBaseListener {
     public void enterItem(HTMLGrammarParser.ItemContext ctx) {
         if(ctx.expr==1){
         for(int i =0; i<ctx.CADEIA().size();i++){
-        saida.println("<li>"+ctx.CADEIA(i).getText());
+        saida.println("<li>"+ctx.CADEIA(0).getText().replaceAll("\"", ""));
         }
-        }else{
-            saida.println("<li>");
+        
         }
     }
 
@@ -120,7 +176,15 @@ public class GeradorDeCodigo extends HTMLGrammarBaseListener {
 
     @Override
     public void enterLink(HTMLGrammarParser.LinkContext ctx) {
-        saida.println("<a href=http://"+ctx.url().CADEIA().getText().replaceAll("\"", "")+">"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
+        saida.println("<a href=http://"+ctx.url().CADEIA().getText().replace("\"", "")+">"+ctx.data().CADEIA().getText().replaceAll("\"", ""));
+    }
+
+    @Override
+    public void enterImg(HTMLGrammarParser.ImgContext ctx) {
+        
+             saida.println("<img src="+ctx.img_src().CADEIA().getText()+" width="+ctx.largura().CADEIA().getText() +" heigth="+ctx.altura().CADEIA().getText()+"/>");
+       
+        
     }
    
     

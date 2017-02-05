@@ -18,6 +18,106 @@ public interface HTMLGrammarListener extends ParseTreeListener {
 	 */
 	void exitPrograma(HTMLGrammarParser.ProgramaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#head}.
+	 * @param ctx the parse tree
+	 */
+	void enterHead(HTMLGrammarParser.HeadContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#head}.
+	 * @param ctx the parse tree
+	 */
+	void exitHead(HTMLGrammarParser.HeadContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#h1}.
+	 * @param ctx the parse tree
+	 */
+	void enterH1(HTMLGrammarParser.H1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#h1}.
+	 * @param ctx the parse tree
+	 */
+	void exitH1(HTMLGrammarParser.H1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#h2}.
+	 * @param ctx the parse tree
+	 */
+	void enterH2(HTMLGrammarParser.H2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#h2}.
+	 * @param ctx the parse tree
+	 */
+	void exitH2(HTMLGrammarParser.H2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#h3}.
+	 * @param ctx the parse tree
+	 */
+	void enterH3(HTMLGrammarParser.H3Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#h3}.
+	 * @param ctx the parse tree
+	 */
+	void exitH3(HTMLGrammarParser.H3Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#body}.
+	 * @param ctx the parse tree
+	 */
+	void enterBody(HTMLGrammarParser.BodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#body}.
+	 * @param ctx the parse tree
+	 */
+	void exitBody(HTMLGrammarParser.BodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#elementos}.
+	 * @param ctx the parse tree
+	 */
+	void enterElementos(HTMLGrammarParser.ElementosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#elementos}.
+	 * @param ctx the parse tree
+	 */
+	void exitElementos(HTMLGrammarParser.ElementosContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#img}.
+	 * @param ctx the parse tree
+	 */
+	void enterImg(HTMLGrammarParser.ImgContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#img}.
+	 * @param ctx the parse tree
+	 */
+	void exitImg(HTMLGrammarParser.ImgContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#altura}.
+	 * @param ctx the parse tree
+	 */
+	void enterAltura(HTMLGrammarParser.AlturaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#altura}.
+	 * @param ctx the parse tree
+	 */
+	void exitAltura(HTMLGrammarParser.AlturaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#largura}.
+	 * @param ctx the parse tree
+	 */
+	void enterLargura(HTMLGrammarParser.LarguraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#largura}.
+	 * @param ctx the parse tree
+	 */
+	void exitLargura(HTMLGrammarParser.LarguraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HTMLGrammarParser#img_src}.
+	 * @param ctx the parse tree
+	 */
+	void enterImg_src(HTMLGrammarParser.Img_srcContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HTMLGrammarParser#img_src}.
+	 * @param ctx the parse tree
+	 */
+	void exitImg_src(HTMLGrammarParser.Img_srcContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HTMLGrammarParser#listaOrdenada}.
 	 * @param ctx the parse tree
 	 */

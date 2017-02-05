@@ -1,0 +1,10 @@
+inicio{
+		
+	img{
+		src:"imagemTeste.jpg";
+		altura:"400px";
+		largura:"400px";
+		
+	}
+
+}

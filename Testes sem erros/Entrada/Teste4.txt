@@ -1,0 +1,61 @@
+inicio{
+
+head{
+	h1{
+		data:"Tabela com elementos";
+	}
+	
+	
+}
+
+tabela{
+	linha{
+	
+		coluna-titulo{
+		   data:"lista 1";
+		}
+		
+		coluna-titulo{
+			data:"lista 2";
+		}
+		
+		coluna-titulo{
+			data:"link";
+		}
+		
+	
+	}
+	
+	linha{
+		coluna{
+			listaOrdenada{
+			   tipo:"a";
+			   *"item 1";
+			   *"item 2";
+			   *"item 3";
+			}
+		
+		}
+		
+		coluna{
+			listaNaoOrdenada{
+				tipo:"bullet";
+				*"item 1";
+				*"item 2";
+				*"item 3";
+			}
+		}
+		
+		coluna{
+			link{
+				data:" Link para teste";
+				url:"www.google.com";
+			}
+		}
+	
+	}
+
+}
+
+
+}
